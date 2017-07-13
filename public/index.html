@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Miracle Help Desk</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/capitalize.css">
+    <link rel="stylesheet" href="/css/valign.css">
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+    <script type="text/javascript" src="/js/helpDeskApp.js"></script>
+    <script type="text/javascript" src="/js/menuCtrl.js"></script>
+    <script type="text/javascript" src="/js/homeCtrl.js"></script>
+    <script type="text/javascript" src="/js/allTicketsCtrl.js"></script>
+    <script type="text/javascript" src="/js/loginCtrl.js"></script>
+    <script type="text/javascript" src="/js/registerCtrl.js"></script>
+    <script type="text/javascript" src="/js/logoutCtrl.js"></script>
+    <script type="text/javascript" src="/js/ticketCtrl.js"></script>
+    <script type="text/javascript" src="/js/myTicketsCtrl.js"></script>
+    <script type="text/javascript" src="/js/ticketNewCtrl.js"></script>
+
+    <script type="text/javascript">
+        $(() => $(".button-collapse").sideNav());
+    </script>
+</head>
+<body ng-app="helpDeskApp">
+    <nav>
+        <div class="nav-wrapper blue-grey darken-4">
+            <div class="container" ng-controller='menuCtrl'>
+                <a href="#/" class="brand-logo">Help Desk</a>
+                <a href="#" data-activates="mobile_sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li ng-repeat="item in nav">
+                        <a ng-href="#{{ item.href }}">{{ item.name }}</a>
+                    </li>
+                </ul>
+                <ul id="mobile_sidenav" class="side-nav">
+                    <li ng-repeat="item in nav">
+                        <a ng-href="#{{ item.href }}">{{ item.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="blue-grey lighten-4">
+        <div class="container">
+            <div ng-view></div>
+        </div>
+    </main>
+
+    <footer class="page-footer blue-grey darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Knowledge Base</h5>
+                    <div class="underline"></div>
+                   <ul>
+                        <li><a class="grey-text text-lighten-3" href="http://helpdesk.miraclesoft.com/knowledgebase.php?article=3"><span>For configuring an account on mail client or mobile device - Zimbra Professional Account</span></a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://helpdesk.miraclesoft.com/knowledgebase.php?article=5"><span>Changing your Email Password from Webmail</span></a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://helpdesk.miraclesoft.com/knowledgebase.php?article=8"><span>Spark communicator Installation &amp; Setup</span></a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://helpdesk.miraclesoft.com/knowledgebase.php?article=6"><span>Zimbra Calendar</span></a></li>
+                    </ul>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Corporate HQ</h5>
+                    <div class="underline"></div>
+                    <ul>
+                        <li><span class="white-text">Miracle Software Systems, Inc.</span></li>
+                        <li><span class="white-text">Global Headquarters</span></li>
+                        <li><span class="white-text">45625 Grand River Avenue</span></li>
+                        <li><span class="white-text">Novi, MI - USA( 48374 )</span></li>
+                        <li><span class="white-text">Ph: (248)-233-1100</span></li>
+                        <li><span class="white-text">E : info@miraclesoft.com</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright blue-grey darken-4">
+            <div class="container">
+                Help Desk &copy; 2017 Miracle Software Systems
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

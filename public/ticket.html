@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col s12">
+        <h4 ng-bind="ticket.title"></h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m9">
+        <div class="row" ng-repeat="reply in ticket.replies">
+            <div class="card">
+                <div class="card-content">
+                    <span ng-bind="reply.message"></span>
+                </div>
+                <div class="card-action grey lighten-3">
+                    <span ng-bind="reply.authorName"></span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="userLoggedIn" class="row">
+            <div class="card">
+                <div class="card-content">
+                    <h5>Reply</h5>
+                    <div class="input-field">
+                        <textarea class="materialize-textarea" ng-model="replyMsg"></textarea>
+                    </div>
+                    <div class="right-align">
+                        <button class="btn waves-effect waves-light" ng-click="sendReply()" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m3 ">
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-action grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Priority</strong>: <span ng-bind="ticket.priority"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Category</strong>: <span ng-bind="ticket.category"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Location</strong>: <span ng-bind="ticket.location"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Department</strong>: <span ng-bind="ticket.department"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Project</strong>: <span ng-bind="ticket.project"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Shift Time</strong>: <span ng-bind="ticket.shiftTime"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Extension / Mobile</strong>: <span ng-bind="ticket.extensionOrMobile"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>IP Address</strong>: <span ng-bind="ticket.ipAddress"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Status</strong>: <span class="capitalize" ng-bind="ticket.status"
+                                    ng-hide="canChangeStatus"></span>
+                                <form ng-show="canChangeStatus">
+                                    <div class="input-field">
+                                        <select ng-model="ticket.status"
+                                                ng-change="status(ticket.status)">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value="open" ng-selected="{{ ticket.status == 'open' }}">Open</option>
+                                            <option value="closed" ng-selected="{{ ticket.status == 'closed' }}">Closed</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <strong>Assignee</strong>:
+                                <span ng-bind="ticket.assigneeName" ng-hide="supportTeam"></span>
+                                <form ng-show="supportTeam">
+                                    <div class="input-field">
+                                        <select ng-model="ticket.assignee"
+                                                ng-change="assign(ticket.assignee)">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option ng-selected="{{ supporter.mid == ticket.assignee }}"
+                                                    ng-repeat="supporter in supportTeam"
+                                                    value="{{ supporter.mid }}">{{ supporter.name }}</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(() => $('select').material_select());
+</script>
